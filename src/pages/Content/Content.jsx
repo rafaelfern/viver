@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 import firebase from '../../firebase/firebase';
 import './Content.css';
 
-function Content() {
+function Content(props) {
 
     const [ userQty, setUserQty ] = useState(0);
     const [ tasksQty, setTasksQty ] = useState(0);
@@ -27,7 +27,7 @@ function Content() {
         setLoading(true);
         const taskSnap = await firebase.database().ref('/tasks/').once("value");
         const taskObj = taskSnap.val();
-        
+        if(!taskObj) setLoading(false);
         setTasksQty(Object.keys(taskObj).length);
         setLoading(false);
     }
@@ -68,7 +68,7 @@ function Content() {
                                 <span>{tasksQty}</span>
                             }
                             <br/>   
-                            <Button className="mt-4" size="sm" color="info" onClick={() => {}}>Ver Tarefas</Button>  
+                            <Button className="mt-4" size="sm" color="info" onClick={() => props.history.push('tarefas')}>Ver Tarefas</Button>  
                         </CardBody>
                     </Card>
                 </Col>
