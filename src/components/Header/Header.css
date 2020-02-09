@@ -1,0 +1,35 @@
+.navbar {
+    -webkit-box-shadow: 0 4px 6px -6px #222;
+    -moz-box-shadow: 0 4px 6px -6px #222;
+    box-shadow: 0 4px 6px -5px #222;
+    background-color: #fff;
+    height: 100%;
+  }
+  
+  .logo {
+    height: auto;
+    width: auto;
+    max-width: 300px;
+  }
+  
+  /* @media (min-width: 910px){
+    .navbar-expand-md .navbar-toggler {
+      display: none;
+    }
+  } */
+  
+  @media only screen and (max-width: 500px) {
+    .logo {
+      max-width: 200px;
+    }
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .logo {
+      max-width: 200px;
+    }
+    .nav-item {
+      margin-top: 6px;
+      text-align: right;
+    }
+  }

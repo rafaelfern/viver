@@ -1,0 +1,248 @@
+html, body, #root, #app, #app>div {
+    /* height: 100%; */
+}
+
+@media only screen and (min-width: 772px) {
+    html, body, #root, #app, #app>div {
+        height: 100%;
+    }
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f8f8fa;
+    font: 14px Arial, Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased !important;
+    /* padding-top: 100px; */
+    /* padding-top: 90px; */
+    display: flex;
+    flex-direction: column;
+    /* min-height: 100vh; */
+    min-height: 100%;
+    font-family: 'Open Sans', Helvetica, sans-serif;
+    margin-top: 4rem;
+}
+
+.text-reader {
+    color: #808080;
+}
+
+
+
+
+.title-ticket-card {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+a {
+    color: currentColor;
+}
+
+a:hover {
+    text-decoration: none;
+    color: currentColor;
+}
+
+[type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+    -webkit-transition-duration: 0.4s;
+    /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.header .login-screen input::placeholder {
+    color: #CFC6C6;
+}
+
+.col-form-label {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.text-label-form {
+    font-size: 14px;
+    color: #808080;
+}
+
+.message-content {
+    height: 50px;
+}
+
+.message-area {
+    padding-top: 15px;
+}
+
+
+.container {
+    margin-top: 10px
+}
+
+.btn-anchor-header {
+    background-color: transparent;
+    border-style: none;
+    color: #1D457A;
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.btn-anchor-header:hover, .btn-anchor-header:focus, .btn-anchor-header:active{
+    background-color: #fff;
+    color: rgb(216, 145, 145);
+    outline: none !important;
+    box-shadow:none;
+}
+
+.btn-anchor-border-rounded {
+    border-color: #E02020;
+    background-color: #fff;
+    border-radius: 3rem;
+    color: #E02020;
+    font-size: 12px;
+    width: 10rem;
+}
+
+.btn-anchor-border-rounded:hover { 
+    background-color: #E02020;
+    font-weight: 900;
+    color: #fff;
+    border-color: #fff;
+    outline: none !important;
+    box-shadow:none;
+}
+
+.btn-anchor-border-rounded > span {
+    font-size: 10px;
+}
+
+.btn-see-all {
+    width:10rem;
+    border-radius: 3rem;
+    border-color: #808080;
+    background-color: transparent;
+    -webkit-box-shadow: 0 4px 6px -6px #808080;
+    -moz-box-shadow: 0 4px 6px -6px #808080;
+    box-shadow: 0 4px 6px -5px #808080;
+}
+
+.btn-see-all:hover{
+    background-color: transparent;
+}
+
+.btn-see-all > span {
+    color: #424242;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.transparent-button {
+    color: #ff6f33;
+    font-size: 1rem;
+    /* font-weight: bold; */
+    /* width: 150px; */
+    padding: 4px 20px;
+    background-color: transparent;
+    border-radius: 20px;
+    border: 1px solid #ff6f33;
+}
+
+.transparent-button:hover {
+    color: #fff;
+    background-color: #ff6f33;
+    border: 1px solid #ff6f33;
+}
+
+.transparent-button:focus,.transparent-button:active {
+    outline: none !important;
+    box-shadow:none;
+}
+
+.gradient-button {
+    /* width: 150px; */
+    padding: 4px 20px;
+    font-size: 1rem;
+    border: 0 !important;
+    background-image: linear-gradient(to right, #ff005b, #ff6f33) !important;
+    color: #fff;
+    border-radius: 20px !important;
+}
+.gradient-button:focus,.gradient-button:active {
+    outline: none !important;
+    box-shadow:none;
+}
+
+.btn-header {
+    width: 154px;
+    font-size: 0.9rem;
+}
+
+.btn-header:focus,.btn-header:active {
+    outline: none !important;
+    box-shadow:none;
+}
+
+.border-button-gradient {
+    background-color: transparent;
+    color: rgba(34, 34, 34, 0.8);;
+    border: 1px solid rgba(34, 34, 34, 0.5);
+    /* box-shadow: 2px 2px 8px -6px #222; */
+    width: 15rem;
+}
+
+.border-button-gradient:hover, .border-button-gradient:active  {
+    background-color: transparent;
+    color: #ff005b;
+    border: 1px solid #ff005b;
+}
+
+.btn-success {
+    background-color: transparent;
+    color:#28a745;
+    border: 1px solid #28a745;
+}
+
+.border-button-danger:hover{
+    background-color: #ff5c5b;
+    color: #fff;
+    border: 1px solid #ff5c5b;
+}
+.border-button-danger {
+    background-color: transparent;
+    color: #ff5c5b;
+    border: 1px solid #ff5c5b;
+}
+
+@media only screen and (max-width: 768px) {
+    .gradient-button, .transparent-button {
+        font-size: 0.75rem;
+        padding: 4px 12px;
+    }
+    .btn-buy, .button-login, .btn-my-tickets {
+        font-size: 1rem;
+        padding: 6px 12px;
+        width: 100%;
+    }
+    .col-form-label {
+        display: flex;
+        justify-content: start;
+    }
+}
+
+.muted {
+    font-size: 0.75rem;
+    color: #aaa;
+}
