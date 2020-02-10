@@ -8,92 +8,88 @@ import {
     CardHeader,
     CardFooter,
     Input,
-    Spinner,
     Button
 } from 'reactstrap';
 import firebase from '../../firebase/firebase';
 import { withRouter } from 'react-router-dom';
 
-function NewTask(props) {
+function NewUser(props) {
     
-    const [ title, setTitle ] = useState('');
-    const [ text, setText ] = useState('');
-    const [ status, setStatus ] = useState(1);
-
-    const saveTask = (text, title) => {
-
-        let taskRefKey = firebase.database().ref('/events/').push().key;
-        let task = {
-            text: text,
-            title: title,
-            status: 1
+    const [ name, setName ] = useState('');
+    const [ email, setEmail ] = useState('');
+    const [ age, setAge ] = useState('');
+    const [ isAdmin, setIsAdmin ] = useState(false);
+    
+    const saveUser = _ => {
+        const userKey = firebase.database().ref('/users/').push().key;
+        let user = {
+            name: name,
+            email: email,
+            age: age,
+            isAdmin: false,
         }
-
-        firebase.database().ref(`tasks/${taskRefKey}`).set(task).then(error => {
+        firebase.database().ref(`users/${userKey}`).set(user).then(error => {
             if(error){
-                alert("Erro ao salvar Tarefa");
+                alert("Erro ao salvar Usuário");
             }else{
-                props.history.push('/tarefas');
+                props.history.push('/usuarios');
             }
         })
-
     }
 
     return (
-        
+    
         <Container className="marg_top_60">
         
         <Row className="mx-auto my-4">
         
             <Col xs={12} md={10} lg={8} className="mx-auto">
                 <Card>
-                    <CardHeader><span className="card-title-label">Nova Tarefa</span></CardHeader>
+                    <CardHeader><span className="card-title-label">Novo Usuário</span></CardHeader>
                     <CardBody>
-                    
+                        
                         <Row className="mt-4">
                             <Col sm={3}>
-                                <p className="col-form-label text-label-form">Título</p>
+                                <p className="col-form-label text-label-form">Nome</p>
                             </Col>
                             <Col sm={9}>
                                 <Input
                                     type="text"
                                     class="form-control"
-                                    name="title"
-                                    value={title}
-                                    onChange={(e) => setTitle(e.target.value)}
+                                    name="name"
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value)}
                                 />
                             </Col>
                         </Row>
                         
                         <Row className="mt-4">
                             <Col sm={3}>
-                                <p className="col-form-label text-label-form">Descrição</p>
+                                <p className="col-form-label text-label-form">E-mail</p>
                             </Col>
                             <Col sm={9}>
                                 <Input
-                                    type="text"
+                                    type="email"
                                     class="form-control"
-                                    name="text"
-                                    value={text}
-                                    onChange={(e) => setText(e.target.value)}
+                                    name="email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
                                 />
                             </Col>
                         </Row>
 
                         <Row className="mt-4">
                             <Col sm={3}>
-                                <p className="col-form-label text-label-form">Status</p>
+                                <p className="col-form-label text-label-form">Idade</p>
                             </Col>
                             <Col sm={9}>
                                 <Input
-                                    type="select"
+                                    type="text"
                                     class="form-control"
-                                    name="status"
-                                    onChange={(e) => setStatus(e.target.value) }
-                                >
-                                    <option value={1}>Ativo</option>
-                                    <option value={0}>Concluída</option>
-                                </Input>
+                                    value={age}
+                                    name="age"
+                                    onChange={(e) => setAge(e.target.value) }
+                                />
                             </Col>
                         </Row>
                     </CardBody>
@@ -101,7 +97,7 @@ function NewTask(props) {
                         <Row className="text-right">
                             <Col>
                                 <Button color="danger" className="mr-2" onClick={() => props.history.goBack()}>Voltar</Button>
-                                <Button color="success" onClick={() => saveTask(text, title)}>Salvar</Button>
+                                <Button color="success" onClick={() => saveUser()}>Salvar</Button>
                             </Col>
                         </Row>
                     </CardFooter>
@@ -112,4 +108,4 @@ function NewTask(props) {
         </Container>
     );
 }
-export default withRouter(NewTask);
+export default withRouter(NewUser);

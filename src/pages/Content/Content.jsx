@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
-    Container, Row, Col, Spinner, Table, Button, InputGroup, Input, InputGroupAddon, InputGroupText, Card, CardBody, CardHeader
+    Container, Row, Col, Spinner, Button, Card, CardBody, CardHeader
 } from 'reactstrap';
 import { withRouter } from 'react-router-dom';
 import firebase from '../../firebase/firebase';
@@ -19,8 +19,13 @@ function Content(props) {
         },[]
     )
 
-    const loadUsers = _ => {
-        
+    const loadUsers = async _ => {
+        setLoading(true);
+        const userSnap = await firebase.database().ref('/users/').once("value");
+        const userObj = userSnap.val();
+        if(!userObj) setLoading(false);
+        setUserQty(Object.keys(userObj).length);
+        setLoading(false);
     }
 
     const loadTasks = async _ => {
@@ -34,30 +39,30 @@ function Content(props) {
 
   return (
         <>
+        
         <Container>
             <Row className="top-container marg_top_60">
                 <Col sm={12} lg={6}>
                     <Card>
-                        <CardHeader><span className="card-title-label"> Usuários</span>&nbsp; <i class="fas fa-users"></i></CardHeader>
+                        <CardHeader><span className="card-title-label"> Usuários</span>&nbsp;&nbsp; <i class="fas fa-users"></i></CardHeader>
                         <CardBody>
-                            
-                            usuários: 
+                            Usuários:&nbsp;&nbsp;
                             {
-                                // loading
-                                // ?
-                                // <Spinner size="sm" color="primary" />
-                                // :
+                                loading
+                                ?
+                                <Spinner size="sm" color="primary" />
+                                :
                                 userQty
                             }
                             <br/>   
-                            <Button className="mt-4" size="sm" color="info" onClick={() => {}}>Ver Usuários</Button>
+                            <Button outline className="mt-4" size="sm" color="info" onClick={() => {}}>Ver Usuários</Button>
                             
                         </CardBody>
                     </Card>
                 </Col>
                 <Col sm={12} lg={6} >
                     <Card>
-                        <CardHeader><span className="card-title-label">Tarefas</span>&nbsp; <i class="fas fa-tasks"></i></CardHeader>
+                        <CardHeader><span className="card-title-label">Tarefas</span>&nbsp;&nbsp; <i class="fas fa-tasks"></i></CardHeader>
                         <CardBody>
                             Tarefas:&nbsp;&nbsp;
                             { 
@@ -68,7 +73,7 @@ function Content(props) {
                                 <span>{tasksQty}</span>
                             }
                             <br/>   
-                            <Button className="mt-4" size="sm" color="info" onClick={() => props.history.push('tarefas')}>Ver Tarefas</Button>  
+                            <Button outline className="mt-4" size="sm" color="info" onClick={() => props.history.push('tarefas')}>Ver Tarefas</Button>  
                         </CardBody>
                     </Card>
                 </Col>

@@ -1,18 +1,54 @@
-import React from 'react'
-import { Route, Switch } from 'react-router-dom';
-import Content from './pages/Content/Content';
-import Task from './pages/Task/Task';
-import Users from './pages/Users/Users';
-import NewTask from './pages/Task/NewTask';
 
-export default function routes() {
-    return (
-        <Switch>
-            <Route path="/" exact component={Content} />
-            <Route path={"/home"} component={Content} />
-            <Route path={"/tarefas"} component={Task} />
-            <Route path={"/usuarios"} component={Users} />
-            <Route path={"/nova-tarefa"} component={NewTask} />
-        </Switch>
-    )
-}
+import Task from "../src/pages/Task/Task";
+import Users from "../src/pages/Users/Users";
+import Content from "../src/pages/Content/Content";
+import Login from "../src/pages/Login/Login";
+import NewTask from "../src/pages/Task/NewTask";
+import NewUser from "../src/pages/Users/NewUser";
+import Admin from "../src/layouts/Admin";
+
+var routes = [
+
+  {
+    path: "/tarefas",
+    component: Task,
+    layout: "/admin",
+  },
+  {
+    path: "/usuarios",
+    component: Users,
+    layout: "/admin",
+  },
+  {
+    path: "/home",
+    component: Content,
+    layout: "/admin",
+  },
+  {
+    path: "/login",
+    component: Login,
+    layout: "/admin",
+  },
+  {
+    path: "/nova-tarefa",
+    component: NewTask,
+    layout: "/admin",
+  },
+  {
+    path: "/novo-usuario",
+    component: NewUser,
+    layout: "/admin"
+  },
+  {
+    path: "/admin",
+    component: Admin,
+  },
+  {
+    redirect: true,
+    path: "/",
+    to: "/login",
+  },
+
+];
+export default routes;
+ 

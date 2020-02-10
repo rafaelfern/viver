@@ -23,26 +23,17 @@ function Task(props) {
         
         let taskArr = [];
         for(const i in taskObj){
-            taskArr = [...taskArr, taskObj[i] ];
-            //     [text] taskObj[i].text,  
-                 
-            // ]
+            const values = taskObj[i];
+            values['key'] = i;
+            taskArr = [...taskArr, values ];
         }
+        
         setTaskList(taskArr);
+        
         setLoading(false)
     }
 
-    const finishTask = key => {
-        firebase.database().ref(`tasks/${key}`).update({status: 0}).then(error => {
-			if(error) {
-				alert("Erro ao concluir tarefa");
-			}else{
-                props.history.push('tarefas')
-			}
-		});
-    }
-   
-
+    
   return (
     <div style={{paddingTop: "30px"}}>
         <Container>
@@ -56,7 +47,7 @@ function Task(props) {
                     <Spinner size="lg" color="primary" />
                 </div>
                 :
-                <TaskList taskList={taskList} finishTask={() => finishTask()} />
+                <TaskList taskList={taskList} history={props.history} />
             }
         </Container>
     </div>
